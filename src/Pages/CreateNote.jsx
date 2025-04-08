@@ -182,7 +182,7 @@ export default function CreateNote() {
                             Please log in to create a note.
                         </p>
                         <button
-                            onClick={() => navigate("/login")}
+                            onClick={() => navigate("/signin")}
                             className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all"
                         >
                             Login Here
