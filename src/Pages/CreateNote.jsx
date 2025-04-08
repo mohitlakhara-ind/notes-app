@@ -63,7 +63,7 @@ export default function CreateNote() {
             formData.append("tags", note.tags);
             if (selectedImage) formData.append("image", selectedImage);
 
-            const response = await axios.post(`${serverAPI}/notes/create`, formData, {
+            const response = await axios.post(`${serverAPI}/notes/create`, formData, {         
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",
