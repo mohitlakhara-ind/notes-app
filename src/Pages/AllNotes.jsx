@@ -123,70 +123,91 @@ export default function AllNotes() {
 
     return (
         <Animator>
-            <div className="min-h-screen flex flex-col  items-center p-6">
-                <Toaster />
-                <h2 className="text-3xl font-semibold mb-6 border-b border-gray-300 text-center p-3 dark:text-white">
-                    All Notes
-                </h2>
+            {token ? <>
+                <div className="min-h-screen flex flex-col  items-center p-6">
+                    <Toaster />
+                    <h2 className="text-3xl font-semibold mb-6 border-b border-gray-300 text-center p-3 dark:text-white">
+                        All Notes
+                    </h2>
 
-                <ControlPanel
-                    onSearch={(term) => setSearchTerm(term)}
-                    onFilter={(filter) => setFilter(filter)}
-                    onSort={(sort) => setSortOrder(sort)}
-                />
-
-                {loading && <div className="animate-pulse text-lg text-gray-500">Loading notes...</div>}
-                {error && <p className="text-red-500 text-lg">{error}</p>}
-
-                {!loading && !error && (
-                    <div className="w-full max-w-5xl">
-                        {filteredNotes.length > 0 ? (
-                            <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6">
-                                {filteredNotes.map((note) => {
-                                    const thumbnail = note.images[0]
-                                        ? `${serverAPI}/uploads/notes/${note.images[0]}`
-                                        : Placeholder;
-
-                                    return (
-                                        <NoteCard
-                                            key={note._id}
-                                            noteId={note._id}
-                                            title={note.title}
-                                            tags={note.tags}
-                                            description={note.description}
-                                            img={thumbnail}
-                                            onDelete={handleDelete}
-                                            onEdit={() => handleEdit(note)}
-                                            onArchive={handleArchive}
-                                            archived={note.archived}
-                                            pinned={note.pinned}
-                                            onPin={handlePin}
-                                            openNote={handleOpenNote}
-                                        />
-                                    );
-                                })}
-                            </div>
-                        ) : (
-                            <p className="text-center text-gray-500 text-lg">
-                                {filter === "archived"
-                                    ? "No archived notes available."
-                                    : "No active notes available."}
-                            </p>
-                        )}
-                    </div>
-
-                )}
-
-
-                {isUpdateOpen && selectedNote && (
-                    <UpdateNote
-                        isOpen={isUpdateOpen}
-                        onClose={() => setIsUpdateOpen(false)}
-                        noteId={selectedNote._id}
-                        initialData={selectedNote}
+                    <ControlPanel
+                        onSearch={(term) => setSearchTerm(term)}
+                        onFilter={(filter) => setFilter(filter)}
+                        onSort={(sort) => setSortOrder(sort)}
                     />
-                )}
-            </div>
+
+                    {loading && <div className="animate-pulse text-lg text-gray-500">Loading notes...</div>}
+                    {error && <p className="text-red-500 text-lg">{error}</p>}
+
+                    {!loading && !error && (
+                        <div className="w-full max-w-5xl">
+                            {filteredNotes.length > 0 ? (
+                                <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6">
+                                    {filteredNotes.map((note) => {
+                                        const thumbnail = note.images[0]
+                                            ? `${serverAPI}/uploads/notes/${note.images[0]}`
+                                            : Placeholder;
+
+                                        return (
+                                            <NoteCard
+                                                key={note._id}
+                                                noteId={note._id}
+                                                title={note.title}
+                                                tags={note.tags}
+                                                description={note.description}
+                                                img={thumbnail}
+                                                onDelete={handleDelete}
+                                                onEdit={() => handleEdit(note)}
+                                                onArchive={handleArchive}
+                                                archived={note.archived}
+                                                pinned={note.pinned}
+                                                onPin={handlePin}
+                                                openNote={handleOpenNote}
+                                            />
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <p className="text-center text-gray-500 text-lg">
+                                    {filter === "archived"
+                                        ? "No archived notes available."
+                                        : "No active notes available."}
+                                </p>
+                            )}
+                        </div>
+
+                    )}
+
+
+                    {isUpdateOpen && selectedNote && (
+                        <UpdateNote
+                            isOpen={isUpdateOpen}
+                            onClose={() => setIsUpdateOpen(false)}
+                            noteId={selectedNote._id}
+                            initialData={selectedNote}
+                        />
+                    )}
+                </div></>
+                : <>
+                    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-amber-100">
+                        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
+                            Unauthorized Access
+                        </h2>
+                        <p className="text-gray-600 dark:text-gray-300 mb-6">
+                            Please log in to access your notes.
+                        </p>
+                        <button
+                            onClick={() => navigate("/login")}
+                            className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all"
+                        >
+                            Login Here
+                        </button>
+                    </div>
+                </>
+
+            }
         </Animator>
     );
+
+
 }

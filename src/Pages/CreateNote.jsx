@@ -31,7 +31,7 @@ export default function CreateNote() {
             "bold", "italic", "underline", "font", "fontsize",
             "paragraph", "image", "video", "align",
             "undo", "redo", "hr", "table", "link", "unlink",
-            "cut", "copy", "paste", "print", "fullsize","h1"
+            "cut", "copy", "paste", "print", "fullsize", "h1"
         ],
         toolbarAdaptive: true,
         toolbarSticky: false,
@@ -63,7 +63,7 @@ export default function CreateNote() {
             formData.append("tags", note.tags);
             if (selectedImage) formData.append("image", selectedImage);
 
-            const response = await axios.post(`${serverAPI}/notes/create`, formData, {         
+            const response = await axios.post(`${serverAPI}/notes/create`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data",
@@ -89,7 +89,7 @@ export default function CreateNote() {
 
     return (
         <Animator>
-            <div className="md:min-h-screen  flex items-center justify-center bg-gray-100 dark:bg-gray-900 dark:text-amber-100 md:p-6 sm:w-full">
+            {token ? <> <div className="md:min-h-screen  flex items-center justify-center bg-gray-100 dark:bg-gray-900 dark:text-amber-100 md:p-6 sm:w-full">
                 <Toaster />
                 <div className="form-container w-full max-w-4xl shadow-xl p-5 bg-white dark:bg-gray-800 dark:text-amber-100 rounded-lg transition-all">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-6">
@@ -172,7 +172,24 @@ export default function CreateNote() {
                         </button>
                     </form>
                 </div>
-            </div>
+            </div></> :
+                <>
+                    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 dark:text-amber-100">
+                        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
+                            Unauthorized Access
+                        </h2>
+                        <p className="text-gray-600 dark:text-gray-300 mb-6">
+                            Please log in to create a note.
+                        </p>
+                        <button
+                            onClick={() => navigate("/login")}
+                            className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all"
+                        >
+                            Login Here
+                        </button>
+                    </div>
+                </>}
+
 
         </Animator>
     );
