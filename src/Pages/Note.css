@@ -1,0 +1,179 @@
+
+
+/* ===== Headings ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    color: #4ecca3;
+}
+
+/* ===== Paragraphs ===== */
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+/* ===== Lists ===== */
+ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+ul li, ol li {
+    margin-bottom: 0.5rem;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+/* ===== Blockquote ===== */
+blockquote {
+    font-style: italic;
+    border-left: 4px solid #4ecca3;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    color: #4a5568;
+    background: #edf2f7;
+}
+
+/* ===== Inline Elements ===== */
+b, strong {
+    font-weight: 700;
+    color: #1a202c;
+}
+
+i, em {
+    font-style: italic;
+}
+
+u {
+    text-decoration: underline;
+}
+
+mark {
+    background-color: #ffdf00;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #1a202c;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+sup {
+    font-size: 0.75rem;
+    vertical-align: super;
+}
+
+sub {
+    font-size: 0.75rem;
+    vertical-align: sub;
+}
+
+small {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* ===== Code Blocks & Inline Code ===== */
+code {
+    background: #edf2f7;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #d63384;
+}
+
+pre {
+    background: #f3f4f6;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    color: #e83e8c;
+}
+
+/* ===== Date Text / Meta Text ===== */
+.date-text {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: #4ecca3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1e1e2f;
+        color: #eaeaea;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #eaeaea;
+    }
+
+    h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+        color: #ff6f61;
+    }
+
+    p {
+        color: #b0b0b0;
+    }
+
+    blockquote {
+        border-left-color: #ff6f61;
+        background: #2c2c38;
+        color: #b0b0b0;
+    }
+
+    b, strong {
+        color: #ffffff;
+    }
+
+    mark {
+        background-color: #ff6f61;
+        color: #1e1e2f;
+    }
+
+    code {
+        background: #2c2c38;
+        color: #ffdf00;
+    }
+
+    pre {
+        background: #2c2c38;
+        color: #ffdf00;
+    }
+
+    .date-text {
+        color: #ff6f61;
+    }
+}
