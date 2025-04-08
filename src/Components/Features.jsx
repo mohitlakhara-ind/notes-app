@@ -5,7 +5,7 @@ import { FaStickyNote, FaLock, FaCloudUploadAlt } from 'react-icons/fa'
 export default function Features() {
     return (
         <>
-            <section className=" bg-transparent mt-12 grid grid-cols-1 md:grid-cols-3 pb-5 gap-6">
+            <section className=" bg-transparent mx-5 mt-12 grid grid-cols-1 md:grid-cols-3 pb-5 gap-6">
                 <FeatureCard
                     icon={<FaStickyNote />}
                     title="Easy Note-Taking"
