@@ -127,7 +127,7 @@ export default function CreateNote() {
                                 <img
                                     src={URL.createObjectURL(selectedImage)}
                                     alt="Thumbnail Preview"
-                                    className="w-40 h-40 object-cover mt-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-md cursor-pointer"
+                                    className="w-full h-auto object-cover mt-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-md cursor-pointer"
                                     onClick={resetImage} // Click to remove image
                                     onLoad={(e) => URL.revokeObjectURL(e.target.src)} // Prevent memory leak
                                 />
